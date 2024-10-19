@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}User Registration{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="text-center">User Registration</h2>
+        <form id="registrationForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_first_name">First Name <span class="text-danger">*</span></label>
+                {{ form.first_name|as_widget(attrs={'class': 'form-control', 'id': 'id_first_name'}) }}
+                {{ form.first_name.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_last_name">Last Name <span class="text-danger">*</span></label>
+                {{ form.last_name|as_widget(attrs={'class': 'form-control', 'id': 'id_last_name'}) }}
+                {{ form.last_name.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_username">Username <span class="text-danger">*</span></label>
+                {{ form.username|as_widget(attrs={'class': 'form-control', 'id': 'id_username'}) }}
+                {{ form.username.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email Address <span class="text-danger">*</span></label>
+                {{ form.email|as_widget(attrs={'class': 'form-control', 'id': 'id_email'}) }}
+                {{ form.email.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_password1">Password <span class="text-danger">*</span></label>
+                {{ form.password1|as_widget(attrs={'class': 'form-control', 'id': 'id_password1'}) }}
+                {{ form.password1.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_password2">Confirm Password <span class="text-danger">*</span></label>
+                {{ form.password2|as_widget(attrs={'class': 'form-control', 'id': 'id_password2'}) }}
+                {{ form.password2.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_date_of_birth">Date of Birth <span class="text-danger">*</span></label>
+                {{ form.date_of_birth|as_widget(attrs={'class': 'form-control', 'id': 'id_date_of_birth', 'type': 'date'}) }}
+                {{ form.date_of_birth.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_gender">Gender <span class="text-danger">*</span></label>
+                {{ form.gender|as_widget(attrs={'class': 'form-control', 'id': 'id_gender'}) }}
+                {{ form.gender.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_profile_picture">Profile Picture</label>
+                {{ form.profile_picture|as_widget(attrs={'class': 'form-control', 'id': 'id_profile_picture', 'accept': 'image/*'}) }}
+                {{ form.profile_picture.errors|as_ul(class='text-danger') }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+        <div class="text-center mt-3">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

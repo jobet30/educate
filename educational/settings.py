@@ -25,10 +25,15 @@ SECRET_KEY = 'django-insecure-fo1l7e5*h&0zy)x9+ui9m9$6xwq=s=d)ute!2k9e5&#%(a52z+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dvptk6-8000.csb.app']
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://dvptk6-8000.csb.app'
+]
 
 # Application definition
+# settings.py
+AUTH_USER_MODEL = 'authentication.CustomUser'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'authentication'
 ]
 
 MIDDLEWARE = [

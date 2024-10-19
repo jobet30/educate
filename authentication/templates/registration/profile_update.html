@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <h2 class="text-center">Update Profile</h2>
+        <form id="profileUpdateForm" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_first_name">First Name <span class="text-danger">*</span></label>
+                {{ form.first_name|as_widget(attrs={'class': 'form-control', 'id': 'id_first_name'}) }}
+                {{ form.first_name.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_last_name">Last Name <span class="text-danger">*</span></label>
+                {{ form.last_name|as_widget(attrs={'class': 'form-control', 'id': 'id_last_name'}) }}
+                {{ form.last_name.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email Address <span class="text-danger">*</span></label>
+                {{ form.email|as_widget(attrs={'class': 'form-control', 'id': 'id_email'}) }}
+                {{ form.email.errors|as_ul(class='text-danger') }}
+            </div>
+            <div class="form-group">
+                <label for="id_profile_picture">Profile Picture</label>
+                {{ form.profile_picture|as_widget(attrs={'class': 'form-control', 'id': 'id_profile_picture', 'accept': 'image/*'}) }}
+                {{ form.profile_picture.errors|as_ul(class='text-danger') }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Profile</button>
+        </form>
+        <div class="text-center mt-3">
+            <p>Back to <a href="{% url 'profile' %}">Profile</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
